@@ -1,0 +1,63 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="toolbar">
+    <h1>Business onboarding</h1>
+    <span class="spacer"></span>
+    <button mat-stroked-button (click)="reload()"><mat-icon>refresh</mat-icon> Refresh</button>
+    <a mat-flat-button color="primary" routerLink="/applications/new"><mat-icon>add</mat-icon> New application</a>
+  </div>
+
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <p class="error" *ngIf="vm.error">{{ vm.error }}</p>
+
+  <div class="cards" *ngIf="vm.summary as s">
+    <mat-card class="card total">
+      <div class="label">Total</div>
+      <div class="value">{{ total(s) }}</div>
+    </mat-card>
+    <mat-card *ngFor="let st of statuses" class="card" [class.active]="statusFilter.value === st" (click)="setFilter(st)">
+      <div class="label"><app-status-chip [status]="st"></app-status-chip></div>
+      <div class="value">{{ s[st] }}</div>
+    </mat-card>
+  </div>
+
+  <div class="filter-row">
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label>Status</mat-label>
+      <mat-select [formControl]="statusFilter">
+        <mat-option [value]="null">All</mat-option>
+        <mat-option *ngFor="let st of statuses" [value]="st">{{ st.replace('_', ' ') }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span class="count">{{ vm.rows.length }} application(s)</span>
+  </div>
+
+  <table mat-table [dataSource]="vm.rows" class="mat-elevation-z1">
+    <ng-container matColumnDef="businessName">
+      <th mat-header-cell *matHeaderCellDef>Business</th>
+      <td mat-cell *matCellDef="let r"><a [routerLink]="['/applications', r.id]">{{ r.businessName }}</a></td>
+    </ng-container>
+    <ng-container matColumnDef="legalStructure">
+      <th mat-header-cell *matHeaderCellDef>Structure</th>
+      <td mat-cell *matCellDef="let r">{{ r.legalStructure.replace('_', ' ') }}</td>
+    </ng-container>
+    <ng-container matColumnDef="naicsCode">
+      <th mat-header-cell *matHeaderCellDef>NAICS</th>
+      <td mat-cell *matCellDef="let r">{{ r.naicsCode || '—' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="representativeCount">
+      <th mat-header-cell *matHeaderCellDef>Reps</th>
+      <td mat-cell *matCellDef="let r">{{ r.representativeCount }}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let r"><app-status-chip [status]="r.status"></app-status-chip></td>
+    </ng-container>
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef>Updated</th>
+      <td mat-cell *matCellDef="let r">{{ r.updatedAt | date:'medium' }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    <tr class="mat-row" *matNoDataRow><td class="mat-cell empty" [attr.colspan]="columns.length">No applications match this filter.</td></tr>
+  </table>
+</ng-container>
