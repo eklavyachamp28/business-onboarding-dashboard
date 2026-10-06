@@ -1,0 +1,41 @@
+<mat-card>
+  <h1>New application</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Business name</mat-label>
+      <input matInput formControlName="businessName" maxlength="200" autocomplete="organization">
+      <mat-error *ngIf="form.controls.businessName.hasError('required')">Business name is required</mat-error>
+    </mat-form-field>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Legal structure</mat-label>
+        <mat-select formControlName="legalStructure">
+          <mat-option *ngFor="let s of structures" [value]="s">{{ s.replace('_', ' ') }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Annual revenue</mat-label>
+        <input matInput type="number" min="0" formControlName="annualRevenue">
+        <span matTextPrefix>$&nbsp;</span>
+        <mat-error *ngIf="form.controls.annualRevenue.hasError('min')">Must be zero or more</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Industry (NAICS)</mat-label>
+      <input matInput formControlName="naicsQuery" [matAutocomplete]="auto" placeholder="Search by keyword or code">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let c of naicsOptions$ | async" [value]="c.code + ' — ' + c.title" (onSelectionChange)="pickNaics(c)">
+          <strong>{{ c.code }}</strong> {{ c.title }} <span class="hint">· {{ c.sector }}</span>
+        </mat-option>
+      </mat-autocomplete>
+      <mat-hint *ngIf="form.controls.naicsCode.value">Selected code: {{ form.controls.naicsCode.value }}</mat-hint>
+    </mat-form-field>
+
+    <div class="actions">
+      <a mat-button routerLink="/">Cancel</a>
+      <button mat-flat-button color="primary" type="submit" [disabled]="saving">Create draft</button>
+    </div>
+  </form>
+</mat-card>
