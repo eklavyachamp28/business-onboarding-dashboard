@@ -1,0 +1,15 @@
+# Java
+backend/target/
+*.class
+*.log
+
+# Node / Angular
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/.angular/
+
+# IDE
+.idea/
+*.iml
+.vscode/
