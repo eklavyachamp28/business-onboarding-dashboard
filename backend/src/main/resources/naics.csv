@@ -1,0 +1,49 @@
+code,title,sector
+111110,Soybean Farming,Agriculture
+236115,New Single-Family Housing Construction,Construction
+236220,Commercial and Institutional Building Construction,Construction
+238210,Electrical Contractors,Construction
+238220,Plumbing and HVAC Contractors,Construction
+311811,Retail Bakeries,Manufacturing
+332710,Machine Shops,Manufacturing
+423430,Computer and Software Merchant Wholesalers,Wholesale Trade
+424410,General Line Grocery Merchant Wholesalers,Wholesale Trade
+441110,New Car Dealers,Retail Trade
+445110,Supermarkets and Grocery Stores,Retail Trade
+445310,Beer Wine and Liquor Stores,Retail Trade
+446110,Pharmacies and Drug Stores,Retail Trade
+448140,Family Clothing Stores,Retail Trade
+454110,Electronic Shopping and Mail-Order Houses,Retail Trade
+484110,General Freight Trucking Local,Transportation
+484121,General Freight Trucking Long-Distance,Transportation
+492110,Couriers and Express Delivery Services,Transportation
+511210,Software Publishers,Information
+517311,Wired Telecommunications Carriers,Information
+518210,Data Processing Hosting and Related Services,Information
+522110,Commercial Banking,Finance and Insurance
+522291,Consumer Lending,Finance and Insurance
+523150,Investment Banking and Securities Dealing,Finance and Insurance
+524210,Insurance Agencies and Brokerages,Finance and Insurance
+531110,Lessors of Residential Buildings,Real Estate
+531210,Offices of Real Estate Agents and Brokers,Real Estate
+541110,Offices of Lawyers,Professional Services
+541211,Offices of Certified Public Accountants,Professional Services
+541330,Engineering Services,Professional Services
+541511,Custom Computer Programming Services,Professional Services
+541512,Computer Systems Design Services,Professional Services
+541611,Administrative Management Consulting Services,Professional Services
+541810,Advertising Agencies,Professional Services
+561320,Temporary Help Services,Administrative Services
+561720,Janitorial Services,Administrative Services
+611110,Elementary and Secondary Schools,Educational Services
+621111,Offices of Physicians,Health Care
+621210,Offices of Dentists,Health Care
+622110,General Medical and Surgical Hospitals,Health Care
+623110,Nursing Care Facilities,Health Care
+713940,Fitness and Recreational Sports Centers,Arts and Recreation
+721110,Hotels and Motels,Accommodation and Food
+722511,Full-Service Restaurants,Accommodation and Food
+722513,Limited-Service Restaurants,Accommodation and Food
+722515,Snack and Nonalcoholic Beverage Bars,Accommodation and Food
+811111,General Automotive Repair,Other Services
+812112,Beauty Salons,Other Services

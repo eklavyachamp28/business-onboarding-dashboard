@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: onboarding-backend
+  datasource:
+    url: jdbc:h2:mem:onboarding;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  profiles:
+    default: demo
+
+app:
+  cors:
+    allowed-origins: http://localhost:4200,http://localhost:8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
